@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://nxtsxt5q0nl1"]
+
+[ext_resource type="PackedScene" uid="uid://bmd28mrmq2aqo" path="res://GameElements/Enemy.tscn" id="1_5lh6q"]
+[ext_resource type="Script" path="res://Scripts/EnemySpawner.gd" id="2_yx8gk"]
+
+[node name="NinTestingScene" type="Node2D"]
+position = Vector2(2, 0)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="EnemySpawner" type="Node" parent="." node_paths=PackedStringArray("sceneCam", "moveToNode")]
+script = ExtResource("2_yx8gk")
+enemyPrefab = ExtResource("1_5lh6q")
+sceneCam = NodePath("../Camera2D")
+moveToNode = NodePath("../MoveToNode")
+
+[node name="MoveToNode" type="Node2D" parent="."]
