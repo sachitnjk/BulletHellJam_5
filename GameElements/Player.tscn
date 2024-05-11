@@ -1,0 +1,52 @@
+[gd_scene load_steps=10 format=3 uid="uid://b6rewk4as2crx"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_raykd"]
+[ext_resource type="Texture2D" uid="uid://dyhn7rnyfbqxt" path="res://Assets/CharacterVisuals/Full body animated characters/Char 2/no hands/idle_0.png" id="1_xifal"]
+[ext_resource type="Texture2D" uid="uid://d3qh8k0wc3uei" path="res://Assets/CharacterVisuals/Full body animated characters/Char 2/no hands/idle_2.png" id="2_4r4in"]
+[ext_resource type="Texture2D" uid="uid://c75eiw1i0f77n" path="res://Assets/CharacterVisuals/Full body animated characters/Char 2/no hands/idle_3.png" id="3_lh18p"]
+[ext_resource type="Texture2D" uid="uid://dfspeb7prydpj" path="res://Assets/CharacterVisuals/Full body animated characters/Char 2/no hands/idle_4.png" id="4_t8qyt"]
+[ext_resource type="Texture2D" uid="uid://cksg684o7htww" path="res://Assets/CharacterVisuals/Full body animated characters/Char 2/no hands/idle_5.png" id="5_3k0vj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqgbk"]
+atlas = ExtResource("1_xifal")
+region = Rect2(0, 0, 2048, 2048)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6n2sp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqgbk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_4r4in")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lh18p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_t8qyt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3k0vj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u6i5e"]
+radius = 269.0
+
+[node name="Player" type="CharacterBody2D"]
+scale = Vector2(0.1, 0.1)
+script = ExtResource("1_raykd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -774)
+sprite_frames = SubResource("SpriteFrames_6n2sp")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -339)
+shape = SubResource("CircleShape2D_u6i5e")
