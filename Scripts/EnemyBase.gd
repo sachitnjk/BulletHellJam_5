@@ -5,15 +5,10 @@ const speed = 300.0
 var moveToPoint : Vector2
 
 func _physics_process(delta):
-	var direction = sign(moveToPoint.x - global_position.x)
+	var direction = moveToPoint - global_position
+	direction = direction.normalized()
 	
-	if direction != 0:
-		if direction > 0:
-			velocity.x = speed
-		else:
-			velocity.x = -speed
-	else:
-		velocity.x = 0
+	velocity = direction * speed
 	
 	move_and_slide()
 

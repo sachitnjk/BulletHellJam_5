@@ -5,6 +5,7 @@ extends Node
 @export var enemyPrefab : PackedScene
 @export var sceneCam : Camera2D
 @export var moveToNode : Node2D
+@export var scaleRange : float = 0.9
 
 var spawnPoint : Vector2
 var camPosition : Vector2
@@ -24,8 +25,8 @@ func GetRandomSpawnPoint() -> Transform2D:
 		camPosition = sceneCam.global_position
 		camSize = sceneCam.get_viewport_rect().size
 		
-		var spawnX = camPosition.x + randi_range(-camSize.x * 1.5, camSize.x * 1.5)
-		var spawnY = camPosition.y + randi_range(-camSize.y * 1.5, camSize.y * 1.5)
+		var spawnX = camPosition.x + randi_range(-camSize.x * scaleRange, camSize.x * scaleRange)
+		var spawnY = camPosition.y + randi_range(-camSize.y * scaleRange, camSize.y * scaleRange)
 		
 		spawnPoint = Vector2(spawnX, spawnY)
 		
