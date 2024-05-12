@@ -1,9 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://vvtuqo3njjxo"]
+[gd_scene load_steps=3 format=3 uid="uid://vvtuqo3njjxo"]
 
 [ext_resource type="PackedScene" uid="uid://b6rewk4as2crx" path="res://GameElements/Player.tscn" id="1_gw5n4"]
+[ext_resource type="PackedScene" uid="uid://uwp382si36re" path="res://GameElements/bullet.tscn" id="2_euqej"]
 
 [node name="BlankTestingLevel" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("1_gw5n4")]
+
+[node name="Bullet" parent="." instance=ExtResource("2_euqej")]
+position = Vector2(77, -116)
