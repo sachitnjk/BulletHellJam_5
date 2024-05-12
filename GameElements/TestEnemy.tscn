@@ -7,7 +7,7 @@
 radius = 20.0
 height = 60.0
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="TestEnemy" type="CharacterBody2D"]
 script = ExtResource("1_eaqrd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
