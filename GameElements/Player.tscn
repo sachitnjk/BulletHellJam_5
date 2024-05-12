@@ -35,18 +35,25 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u6i5e"]
-radius = 269.0
+radius = 26.9
 
-[node name="Player" type="CharacterBody2D"]
-scale = Vector2(0.1, 0.1)
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("shootDirectionLine")]
 script = ExtResource("1_raykd")
+shootDirectionLine = NodePath("ShotDirLine")
+
+[node name="ShotDirLine" type="Line2D" parent="."]
+position = Vector2(0, -37)
+points = PackedVector2Array(0, 0, 0, -60)
+width = 5.0
+default_color = Color(1, 0.796078, 0, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -774)
+position = Vector2(0, -77)
+scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_6n2sp")
 animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -339)
+position = Vector2(0, -33.9)
 shape = SubResource("CircleShape2D_u6i5e")
