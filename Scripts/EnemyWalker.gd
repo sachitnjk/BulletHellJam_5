@@ -1,0 +1,33 @@
+extends "res://Scripts/EnemyBase.gd"
+
+var moveToTarget : Vector2
+var playerNode
+
+func _ready():
+	var rootNode = get_tree().get_root().get_child(0)
+	playerNode = rootNode.get_node("Player")
+	
+
+func _process(delta):
+	if playerNode != null:
+		moveToTarget = playerNode.transform.origin
+	
+	var direction = moveToTarget - global_position
+	direction = direction.normalized()
+	
+	velocity = direction * speed
+	
+	move_and_slide()
+	CollisionCheck()
+
+
+func CollisionCheck():
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		if(collider.has_method("TakeDamage")):
+			collider.TakeDamage()
+
+#Called by EnemySpawner script
+#func MoveTowardsTransform(targetTransform : Transform2D):
+	#moveToTarget = targetTransform.origin

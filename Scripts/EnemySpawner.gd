@@ -39,11 +39,9 @@ func GetRandomSpawnPoint() -> Transform2D:
 	
 func SpawnEnemy():
 	var  charBodyTesting = enemyPrefab.instantiate()
-	#var enemyScriptNode = charBodyTesting.get_node("EnemyBase")
 	
 	charBodyTesting.transform = GetRandomSpawnPoint()
 	
 	add_child(charBodyTesting)
-	charBodyTesting.MoveTowardsTransform(moveToNode.transform)
-	
-	print(charBodyTesting.name)
+	print(moveToNode.transform)
+	#charBodyTesting.MoveTowardsTransform(moveToNode.transform)
