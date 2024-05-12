@@ -33,3 +33,8 @@ func FireBullet(direction: Vector2):
 	spawnnedBullet.global_position = shootDirectionLine.global_position
 	spawnnedBullet.SetMoveDirection(direction)
 	pass
+
+
+func TakeDamage():
+	print("The Player")
+	pass

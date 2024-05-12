@@ -16,3 +16,6 @@ func SetMoveDirection(direction: Vector2):
 	look_at(global_position + direction * DIRECTION_SETTING_OFFSET)
 	pass
 
+func OnBodyEnter(body):
+	body.TakeDamage()
+	pass
