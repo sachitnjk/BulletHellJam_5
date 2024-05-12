@@ -1,11 +1,14 @@
 extends Area2D
 
 @export var moveSpeed: float = 250
+@export var lifeTimeTimer: float = 6.0
 
 const DIRECTION_SETTING_OFFSET: int = 5
 
 func _process(delta):
-	look_at(get_global_mouse_position())
+	lifeTimeTimer -= delta
+	if(lifeTimeTimer < 0.0):
+		queue_free()
 	global_position += global_transform.x * (moveSpeed * delta)
 	pass
 	
