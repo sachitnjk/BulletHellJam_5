@@ -17,5 +17,6 @@ func SetMoveDirection(direction: Vector2):
 	pass
 
 func OnBodyEnter(body):
-	body.TakeDamage()
+	if body.has_method("TakeDamage"):
+		body.TakeDamage()
 	pass
