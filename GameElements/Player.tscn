@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_raykd"]
 [ext_resource type="Texture2D" uid="uid://dyhn7rnyfbqxt" path="res://Assets/CharacterVisuals/Full body animated characters/Char 2/no hands/idle_0.png" id="1_xifal"]
-[ext_resource type="PackedScene" uid="uid://uwp382si36re" path="res://GameElements/bullet.tscn" id="2_2wssq"]
 [ext_resource type="Texture2D" uid="uid://d3qh8k0wc3uei" path="res://Assets/CharacterVisuals/Full body animated characters/Char 2/no hands/idle_2.png" id="2_4r4in"]
+[ext_resource type="PackedScene" uid="uid://uwp382si36re" path="res://GameElements/PlayerBullet.tscn" id="2_u0xyq"]
 [ext_resource type="Texture2D" uid="uid://c75eiw1i0f77n" path="res://Assets/CharacterVisuals/Full body animated characters/Char 2/no hands/idle_3.png" id="3_lh18p"]
 [ext_resource type="Texture2D" uid="uid://dfspeb7prydpj" path="res://Assets/CharacterVisuals/Full body animated characters/Char 2/no hands/idle_4.png" id="4_t8qyt"]
 [ext_resource type="Texture2D" uid="uid://cksg684o7htww" path="res://Assets/CharacterVisuals/Full body animated characters/Char 2/no hands/idle_5.png" id="5_3k0vj"]
@@ -41,7 +41,7 @@ radius = 26.9
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("shootDirectionLine")]
 script = ExtResource("1_raykd")
 shootDirectionLine = NodePath("ShotDirLine")
-bulletScene = ExtResource("2_2wssq")
+bulletScene = ExtResource("2_u0xyq")
 
 [node name="ShotDirLine" type="Line2D" parent="."]
 position = Vector2(0, -37)
