@@ -7,6 +7,12 @@ extends Node
 @export var moveToNode : Node2D
 @export var scaleRange : float = 0.9
 
+@export_range(0.1, 30) var initialSpawnDelay : float
+@export_range(0.5, 20) var delayBetweenSpawns : float
+
+var initialSpawnTimer : float = 0.0
+var spawnTimer : float = 0.0
+var hasStarterSpawn : bool = false
 var spawnPoint : Vector2
 var camPosition : Vector2
 var camSize : Vector2
@@ -15,8 +21,13 @@ func _ready():
 	pass
 	
 func _process(delta):
-	if(Input.is_action_just_pressed("ui_select")):
-		SpawnEnemy()
+	if !hasStarterSpawn:
+		initialSpawnTimer += delta
+	elif hasStarterSpawn:
+		spawnTimer += delta
+	
+	#if(Input.is_action_just_pressed("ui_select")):
+	EnemySpawnCheck()
 
 
 func GetRandomSpawnPoint() -> Transform2D:
@@ -37,11 +48,17 @@ func GetRandomSpawnPoint() -> Transform2D:
 	return spawnTransform
 	
 	
+func EnemySpawnCheck():
+	if initialSpawnTimer >= initialSpawnDelay:
+		initialSpawnTimer = 0.0
+		hasStarterSpawn = true
+		SpawnEnemy()
+	
+	if spawnTimer >= delayBetweenSpawns:
+		spawnTimer = 0.0
+		SpawnEnemy()
+
 func SpawnEnemy():
 	var  charBodyTesting = enemyPrefab.instantiate()
-	
 	charBodyTesting.transform = GetRandomSpawnPoint()
-	
 	add_child(charBodyTesting)
-	print(moveToNode.transform)
-	#charBodyTesting.MoveTowardsTransform(moveToNode.transform)
