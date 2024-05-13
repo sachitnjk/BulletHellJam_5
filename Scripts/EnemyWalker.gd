@@ -18,7 +18,3 @@ func _process(delta):
 	
 	move_and_slide()
 	ApplyDamgeCollisionCheck()
-
-#Called by EnemySpawner script
-#func MoveTowardsTransform(targetTransform : Transform2D):
-	#moveToTarget = targetTransform.origin

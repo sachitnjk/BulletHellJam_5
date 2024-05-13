@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var speed : float
 @export var health : float = 6
+#@export var enemyBullet : PackedScene
 
 var moveToTarget: Vector2
 var targetIsSet: bool = false

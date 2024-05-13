@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://nxtsxt5q0nl1"]
 
-[ext_resource type="PackedScene" uid="uid://4224518il86w" path="res://GameElements/EnemyWalker.tscn" id="2_xaqni"]
+[ext_resource type="PackedScene" uid="uid://4mp1j471qglq" path="res://GameElements/EnemyTurretWalker.tscn" id="2_w3uen"]
 [ext_resource type="Script" path="res://Scripts/EnemySpawner.gd" id="2_yx8gk"]
 [ext_resource type="PackedScene" uid="uid://b6rewk4as2crx" path="res://GameElements/Player.tscn" id="3_x1ix6"]
 
@@ -11,7 +11,7 @@ position = Vector2(2, 0)
 
 [node name="EnemySpawner" type="Node" parent="." node_paths=PackedStringArray("sceneCam", "moveToNode")]
 script = ExtResource("2_yx8gk")
-enemyPrefab = ExtResource("2_xaqni")
+enemyPrefab = ExtResource("2_w3uen")
 sceneCam = NodePath("../Camera2D")
 moveToNode = NodePath("../Player")
 

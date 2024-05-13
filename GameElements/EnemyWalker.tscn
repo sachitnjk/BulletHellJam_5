@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://4224518il86w"]
 
 [ext_resource type="Script" path="res://Scripts/EnemyWalker.gd" id="1_wvtj6"]
-[ext_resource type="Texture2D" uid="uid://cg6hakolpowop" path="res://Assets/CharacterVisuals/Full body animated characters/Char 4/no hands/idle_0.png" id="2_q44uh"]
+[ext_resource type="Texture2D" uid="uid://dmp3m4flds3kv" path="res://Assets/CharacterVisuals/Full body animated characters/Enemies/Enemy 1/idle_0.png" id="2_4grbw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2s8o6"]
 radius = 20.0
@@ -16,7 +16,7 @@ speed = 80.0
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -76)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_q44uh")
+texture = ExtResource("2_4grbw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -30)
