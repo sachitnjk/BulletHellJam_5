@@ -1,8 +1,8 @@
 extends "res://Scripts/EnemyBase.gd"
 
-@export var enemyBullet : PackedScene
 @export var bulletSpeed : float
 @export var shootInterval : float
+@export var bulletSpawnPoint: Transform2D
 
 var playerNode
 var targetPosition
@@ -28,7 +28,7 @@ func _physics_process(delta):
 		if canShoot:
 			shootTimer += delta
 			if shootTimer >= shootInterval:
-				ShootAtPlayer()
+				FireBullet((playerNode.global_position - global_position).normalized(), global_position)
 				shootTimer = 0.0
 	pass
 
@@ -44,12 +44,3 @@ func CheckDistanceToTargetPos():
 		canMove = false
 		isMoving = false
 		velocity = Vector2.ZERO
-#
-func ShootAtPlayer():
-	var spawnedBullet = enemyBullet.instantiate()
-	var rootNode = get_tree().get_root().get_child(0)
-	rootNode.add_child(spawnedBullet)
-	
-	var direction = (playerNode.global_position - global_position).normalized()
-	spawnedBullet.global_position = global_position
-	spawnedBullet.SetMoveDirection(direction)

@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var speed : float
 @export var health : float = 6
-#@export var enemyBullet : PackedScene
+@export var enemyBullet : PackedScene
 
 var moveToTarget: Vector2
 var targetIsSet: bool = false
@@ -39,10 +39,10 @@ func ApplyDamgeCollisionCheck():
 			#tf idk why it finds 2 colliders on the player and applies damage twice so just breaking after applying damage once
 	pass
 
-#func ShootAtPlayer(startDirection : Vector2):
-	#var spawnedBullet = enemyBullet.instantiate()
-	#add_child(spawnedBullet)
-	#
-	#var direction = (playerNode.global_position - global_position).normalized()
-	#spawnedBullet.global_position = global_position
-	#spawnedBullet.SetMoveDirection(direction)
+func FireBullet(direction: Vector2, spawnPoint: Vector2):
+	var spawnnedBullet = enemyBullet.instantiate()
+	var rootNode = get_tree().get_root().get_child(0)
+	rootNode.add_child(spawnnedBullet)
+	spawnnedBullet.global_position = spawnPoint
+	spawnnedBullet.SetMoveDirection(direction)
+	pass
