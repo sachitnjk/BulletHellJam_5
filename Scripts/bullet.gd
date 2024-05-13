@@ -18,5 +18,11 @@ func SetMoveDirection(direction: Vector2):
 
 func OnBodyEnter(body):
 	if body.has_method("TakeDamage"):
+		Explode()
 		body.TakeDamage()
+	pass
+	
+func Explode():
+	# maybe play some effects here
+	queue_free()
 	pass

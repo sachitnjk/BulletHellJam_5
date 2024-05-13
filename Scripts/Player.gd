@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@export var health: int = 3
 @export var speed: float = 300.0
 @export var shootLineLength: float = 60.0
 @export var shootDirectionLine: Line2D
@@ -36,5 +37,10 @@ func FireBullet(direction: Vector2):
 
 
 func TakeDamage():
-	print("The Player")
+	health = health - 1
+	if(health == 0):
+		print("Player Died")
+	else:
+		print("current player hp:")
+		print(health)
 	pass

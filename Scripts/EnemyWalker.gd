@@ -1,6 +1,5 @@
 extends "res://Scripts/EnemyBase.gd"
 
-var moveToTarget : Vector2
 var playerNode
 
 func _ready():
@@ -18,15 +17,7 @@ func _process(delta):
 	velocity = direction * speed
 	
 	move_and_slide()
-	CollisionCheck()
-
-
-func CollisionCheck():
-	for i in get_slide_collision_count():
-		var collision = get_slide_collision(i)
-		var collider = collision.get_collider()
-		if(collider.has_method("TakeDamage")):
-			collider.TakeDamage()
+	ApplyDamgeCollisionCheck()
 
 #Called by EnemySpawner script
 #func MoveTowardsTransform(targetTransform : Transform2D):

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://vvtuqo3njjxo"]
 
 [ext_resource type="PackedScene" uid="uid://b6rewk4as2crx" path="res://GameElements/Player.tscn" id="1_gw5n4"]
-[ext_resource type="PackedScene" uid="uid://bmd28mrmq2aqo" path="res://OnlyForTesting/TestEnemy.tscn" id="2_xprrf"]
+[ext_resource type="PackedScene" uid="uid://4224518il86w" path="res://GameElements/EnemyWalker.tscn" id="2_614d4"]
 
 [node name="BlankTestingLevel" type="Node2D"]
 
@@ -9,5 +9,5 @@
 
 [node name="Player" parent="." instance=ExtResource("1_gw5n4")]
 
-[node name="TestEnemy" parent="." instance=ExtResource("2_xprrf")]
-position = Vector2(223, -131)
+[node name="EnemyWalker" parent="." instance=ExtResource("2_614d4")]
+position = Vector2(345, -190)
