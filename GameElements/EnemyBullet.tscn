@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgpw2xlm76vqk"]
+
+[ext_resource type="Script" path="res://Scripts/Bullet.gd" id="1_0ikty"]
+[ext_resource type="Texture2D" uid="uid://co31anhov0xm7" path="res://Assets/Extras/bullet.png" id="2_n1mox"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_t7luv"]
+blend_mode = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qbmlr"]
+
+[node name="EnemyBullet" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_0ikty")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_t7luv")
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_n1mox")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qbmlr")
+
+[connection signal="body_entered" from="." to="." method="OnBodyEnter"]
