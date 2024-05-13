@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://4mp1j471qglq"]
+[gd_scene load_steps=5 format=3 uid="uid://4mp1j471qglq"]
 
 [ext_resource type="Script" path="res://Scripts/EnemyTurretWalker.gd" id="1_mg1ge"]
 [ext_resource type="Texture2D" uid="uid://plhaa7tuib0p" path="res://Assets/CharacterVisuals/Full body animated characters/Enemies/Enemy 2/idle_0.png" id="2_m4r5x"]
+[ext_resource type="PackedScene" uid="uid://dgpw2xlm76vqk" path="res://GameElements/EnemyBullet.tscn" id="2_uilik"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2s8o6"]
 radius = 20.0
@@ -11,6 +12,9 @@ height = 60.0
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_mg1ge")
+enemyBullet = ExtResource("2_uilik")
+bulletSpeed = 10.0
+shootInterval = 2.0
 speed = 80.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

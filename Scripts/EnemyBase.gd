@@ -38,3 +38,11 @@ func ApplyDamgeCollisionCheck():
 			break
 			#tf idk why it finds 2 colliders on the player and applies damage twice so just breaking after applying damage once
 	pass
+
+#func ShootAtPlayer(startDirection : Vector2):
+	#var spawnedBullet = enemyBullet.instantiate()
+	#add_child(spawnedBullet)
+	#
+	#var direction = (playerNode.global_position - global_position).normalized()
+	#spawnedBullet.global_position = global_position
+	#spawnedBullet.SetMoveDirection(direction)

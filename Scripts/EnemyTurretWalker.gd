@@ -1,11 +1,15 @@
 extends "res://Scripts/EnemyBase.gd"
 
 @export var enemyBullet : PackedScene
+@export var bulletSpeed : float
+@export var shootInterval : float
 
 var playerNode
 var targetPosition
+var shootTimer : float = 0.0
 var isMoving : bool = false
 var canMove : bool = true
+var canShoot : bool = true
 
 func _ready():
 	var rootNode = get_tree().get_root().get_child(0)
@@ -20,8 +24,12 @@ func _physics_process(delta):
 		velocity = direction * speed
 		move_and_slide()
 		CheckDistanceToTargetPos()
-	#else:
-		#ShootAtPlayer()
+	else:
+		if canShoot:
+			shootTimer += delta
+			if shootTimer >= shootInterval:
+				ShootAtPlayer()
+				shootTimer = 0.0
 	pass
 
 func MoveToRandomPoint():
@@ -36,10 +44,12 @@ func CheckDistanceToTargetPos():
 		canMove = false
 		isMoving = false
 		velocity = Vector2.ZERO
-
-#func ShootAtPlayer():
-	#var spawnedBullet = enemyBullet.instantiate()
-	#add_child(spawnedBullet)
-	#
-	#var direction = (playerNode.global_position - global_position).normalized()
-	#
+#
+func ShootAtPlayer():
+	var spawnedBullet = enemyBullet.instantiate()
+	var rootNode = get_tree().get_root().get_child(0)
+	rootNode.add_child(spawnedBullet)
+	
+	var direction = (playerNode.global_position - global_position).normalized()
+	spawnedBullet.global_position = global_position
+	spawnedBullet.SetMoveDirection(direction)
