@@ -1,8 +1,6 @@
 extends "res://Scripts/EnemyBase.gd"
 
 @export var gapBetweenShots: float = 1.5
-@export var horizontalWanderLimits: Vector2
-@export var verticalWanderLimits: Vector2
 var shootingTimer: float
 var player: Node2D
 
@@ -31,7 +29,7 @@ func HandleShoot(delta: float):
 	pass
 
 func SetNewMoveTarget():
-	var targetX = randf_range(horizontalWanderLimits.x, horizontalWanderLimits.y)
-	var targetY = randf_range(verticalWanderLimits.x, verticalWanderLimits.y)
+	var targetX = randf_range(horizontalGameBoundLimits.x, horizontalGameBoundLimits.y)
+	var targetY = randf_range(verticalGameBoundLimits.x, verticalGameBoundLimits.y)
 	SetMoveToTargetPosition(Vector2(targetX, targetY))
 	pass

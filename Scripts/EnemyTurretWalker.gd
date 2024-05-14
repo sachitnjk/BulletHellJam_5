@@ -33,14 +33,18 @@ func _physics_process(delta):
 # POSITION SELECTION SHOULD BE FIXED CAN LEAVE IT TOO
 func MoveToRandomPoint():
 	var randomOffset = Vector2(randf_range(-30, 30), randf_range(-30, 30))
-	SetMoveToTargetPosition(playerNode.transform.origin + randomOffset)
+	var target = playerNode.transform.origin + randomOffset
+	if(!IsInGameBounds(target)):
+		target = playerNode.global_position
+	SetMoveToTargetPosition(target)
 
 func DirectionRotator():
 	var rotationAngle = rotationIncrementRate * get_physics_process_delta_time()
 	fireDirection = fireDirection.rotated(rotationAngle)
 
 func CheckDistanceToTargetPos():
-	if (global_position.distance_to(moveToTarget) <= 100 || global_position.distance_to(playerNode.global_position) <= 200):
+	var stoppingForPlayer = IsInGameBounds(global_position) && (global_position.distance_to(playerNode.global_position) <= 200)
+	if (global_position.distance_to(moveToTarget) <= 100 || stoppingForPlayer):
 		ClearMoveToTargetPosition()
 		canShoot = true
 		velocity = Vector2.ZERO

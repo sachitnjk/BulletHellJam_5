@@ -3,6 +3,8 @@ extends CharacterBody2D
 @export var speed : float
 @export var health : float = 6
 @export var enemyBullet : PackedScene
+@export var horizontalGameBoundLimits: Vector2 = Vector2(-527, 527)
+@export var verticalGameBoundLimits: Vector2 = Vector2(-276, 276)
 
 var moveToTarget: Vector2
 var targetIsSet: bool = false
@@ -50,3 +52,11 @@ func FireBullet(direction: Vector2, spawnPoint: Vector2):
 	spawnnedBullet.global_position = spawnPoint
 	spawnnedBullet.SetMoveDirection(direction)
 	pass
+
+func IsInGameBounds(position: Vector2):
+	var isInBounds = (position.x > horizontalGameBoundLimits.x) 
+	if(isInBounds && (position.y > verticalGameBoundLimits.x) && (position.y < verticalGameBoundLimits.y)):
+		isInBounds = true;
+	else:
+		isInBounds = false
+	return isInBounds
