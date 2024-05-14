@@ -14,3 +14,4 @@ func _process(delta):
 	MoveToTargetPosition()
 	move_and_slide()
 	ApplyDamgeCollisionCheck()
+	HandleLookDirectionVisual()

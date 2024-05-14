@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var shootLineLength: float = 60.0
 @export var shootDirectionLine: Line2D
 @export var bulletScene: PackedScene
+@export var animatedSprite: AnimatedSprite2D
 var stoppingSpeed: float = 0
 
 const LINE_END_POINT_INDEX: int = 1
@@ -25,6 +26,19 @@ func _physics_process(delta):
 	move_and_slide()
 	if(Input.is_action_just_pressed("shoot")):
 		FireBullet(directionToMouse)
+	HandleVisuals(direction.x)
+	pass
+
+func HandleVisuals(xDirectionInput: float):
+	if(xDirectionInput < 0):
+		animatedSprite.flip_h = true
+	elif(xDirectionInput > 0):
+		animatedSprite.flip_h = false
+	
+	if(velocity.length() != 0):
+		animatedSprite.play("moving")
+	else:
+		animatedSprite.play("idle")
 	pass
 	
 func FireBullet(direction: Vector2):

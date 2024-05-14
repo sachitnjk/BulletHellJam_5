@@ -18,6 +18,8 @@ func _physics_process(delta):
 	MoveToTargetPosition()
 	move_and_slide()
 	ApplyDamgeCollisionCheck()
+	
+	HandleLookDirectionVisual()
 	pass
 	
 func HandleShoot(delta: float):

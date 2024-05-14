@@ -1,25 +1,55 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdl56e7q435wd"]
+[gd_scene load_steps=10 format=3 uid="uid://bdl56e7q435wd"]
 
 [ext_resource type="Script" path="res://Scripts/EnemyWanderShooter.gd" id="1_c34oh"]
-[ext_resource type="Texture2D" uid="uid://bsjvxcbro0iwi" path="res://Assets/CharacterVisuals/Full body animated characters/Enemies/Enemy 4/idle_1.png" id="2_1n7m6"]
 [ext_resource type="PackedScene" uid="uid://dgpw2xlm76vqk" path="res://GameElements/EnemyBullet.tscn" id="2_ien26"]
+[ext_resource type="Texture2D" uid="uid://cqpbjttjy4iwv" path="res://Assets/CharacterVisuals/Full body animated characters/Enemies/Enemy 4/roll_0.png" id="3_tyht1"]
+[ext_resource type="Texture2D" uid="uid://csf832j7f76sq" path="res://Assets/CharacterVisuals/Full body animated characters/Enemies/Enemy 4/roll_1.png" id="4_gisk8"]
+[ext_resource type="Texture2D" uid="uid://c7b0k68o82g74" path="res://Assets/CharacterVisuals/Full body animated characters/Enemies/Enemy 4/roll_2.png" id="5_dwdou"]
+[ext_resource type="Texture2D" uid="uid://chwscgxn1yfsc" path="res://Assets/CharacterVisuals/Full body animated characters/Enemies/Enemy 4/roll_3.png" id="6_cqc54"]
+[ext_resource type="Texture2D" uid="uid://44jx4o3n5tb1" path="res://Assets/CharacterVisuals/Full body animated characters/Enemies/Enemy 4/roll_4.png" id="7_mt4x1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d0gya"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_tyht1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gisk8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_dwdou")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cqc54")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_mt4x1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2s8o6"]
 radius = 20.0
 height = 60.0
 
-[node name="EnemyWanderShooter" type="CharacterBody2D"]
+[node name="EnemyWanderShooter" type="CharacterBody2D" node_paths=PackedStringArray("animatedSprite")]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_c34oh")
 speed = 80.0
 health = 3.0
 enemyBullet = ExtResource("2_ien26")
+animatedSprite = NodePath("AnimatedSprite2D")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0.400001, -46.6)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -53)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_1n7m6")
+sprite_frames = SubResource("SpriteFrames_d0gya")
+autoplay = "default"
+frame_progress = 0.567466
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_2s8o6")

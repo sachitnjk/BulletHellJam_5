@@ -37,12 +37,13 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_bjyvt"]
 radius = 27.0185
 
-[node name="EnemyWalker" type="CharacterBody2D"]
+[node name="EnemyWalker" type="CharacterBody2D" node_paths=PackedStringArray("animatedSprite")]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_wvtj6")
 speed = 80.0
 health = 2.0
+animatedSprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 3

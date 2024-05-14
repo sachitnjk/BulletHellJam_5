@@ -19,6 +19,7 @@ func _physics_process(delta):
 	if targetIsSet:
 		MoveToTargetPosition()
 		move_and_slide()
+		HandleLookDirectionVisual()
 		CheckDistanceToTargetPos()
 	elif canShoot:
 		DirectionRotator()
@@ -48,3 +49,4 @@ func CheckDistanceToTargetPos():
 		ClearMoveToTargetPosition()
 		canShoot = true
 		velocity = Vector2.ZERO
+		animatedSprite.play("idle")

@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var speed : float
 @export var health : float = 6
 @export var enemyBullet : PackedScene
+@export var animatedSprite: AnimatedSprite2D
 @export var horizontalGameBoundLimits: Vector2 = Vector2(-527, 527)
 @export var verticalGameBoundLimits: Vector2 = Vector2(-276, 276)
 
@@ -60,3 +61,9 @@ func IsInGameBounds(position: Vector2):
 	else:
 		isInBounds = false
 	return isInBounds
+	
+func HandleLookDirectionVisual():
+	if(velocity.x > 0):
+		animatedSprite.flip_h = false
+	elif(velocity.x < 0):
+		animatedSprite.flip_h = true
