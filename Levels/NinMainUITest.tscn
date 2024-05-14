@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bvc6wofahyyt0"]
 
 [ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_h0bq4"]
-[ext_resource type="AudioStream" uid="uid://wxtm8cc5413e" path="res://Assets/AudioClips/Possibility-V2.ogg" id="2_x6lg6"]
+[ext_resource type="Script" path="res://Scripts/TempGM.gd" id="2_cya6b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i3pn0"]
 bg_color = Color(0.6, 0.6, 0.6, 0.282353)
@@ -32,7 +32,6 @@ grow_vertical = 2
 script = ExtResource("1_h0bq4")
 
 [node name="BasePanel" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -114,10 +113,8 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_taxsl")
 theme_override_styles/hover = SubResource("StyleBoxFlat_huye7")
 text = "Exit"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_x6lg6")
-volume_db = -15.0
-autoplay = true
+[node name="Temp_GM" type="Node" parent="."]
+script = ExtResource("2_cya6b")
 
 [connection signal="pressed" from="BasePanel/ButtonsPanel/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="BasePanel/ButtonsPanel/Exit" to="." method="_on_exit_pressed"]
