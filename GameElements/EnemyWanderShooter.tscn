@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdl56e7q435wd"]
+[gd_scene load_steps=5 format=3 uid="uid://bdl56e7q435wd"]
 
 [ext_resource type="Script" path="res://Scripts/EnemyWanderShooter.gd" id="1_c34oh"]
 [ext_resource type="Texture2D" uid="uid://bsjvxcbro0iwi" path="res://Assets/CharacterVisuals/Full body animated characters/Enemies/Enemy 4/idle_1.png" id="2_1n7m6"]
+[ext_resource type="PackedScene" uid="uid://dgpw2xlm76vqk" path="res://GameElements/EnemyBullet.tscn" id="2_ien26"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2s8o6"]
 radius = 20.0
@@ -11,7 +12,11 @@ height = 60.0
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_c34oh")
+horizontalWanderLimits = Vector2(-527, 527)
+verticalWanderLimits = Vector2(-276, 276)
+speed = 80.0
 health = 3.0
+enemyBullet = ExtResource("2_ien26")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0.400001, -46.6)

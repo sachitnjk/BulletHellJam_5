@@ -14,4 +14,4 @@
 position = Vector2(330, -205)
 
 [node name="EnemyWanderShooter" parent="." instance=ExtResource("3_q80rs")]
-position = Vector2(-407, -80)
+position = Vector2(-496, -251)
