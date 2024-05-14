@@ -16,7 +16,6 @@ bulletSpeed = 10.0
 shootInterval = 0.2
 rotationIncrementRate = 1.5
 speed = 80.0
-health = 8.0
 enemyBullet = ExtResource("2_uilik")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

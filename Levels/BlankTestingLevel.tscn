@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b6rewk4as2crx" path="res://GameElements/Player.tscn" id="1_gw5n4"]
 [ext_resource type="PackedScene" uid="uid://4224518il86w" path="res://GameElements/EnemyWalker.tscn" id="2_614d4"]
-[ext_resource type="PackedScene" uid="uid://dgpw2xlm76vqk" path="res://GameElements/EnemyBullet.tscn" id="3_wor4y"]
+[ext_resource type="PackedScene" uid="uid://bdl56e7q435wd" path="res://GameElements/EnemyWanderShooter.tscn" id="3_q80rs"]
 
 [node name="BlankTestingLevel" type="Node2D"]
 
@@ -13,5 +13,5 @@
 [node name="EnemyWalker" parent="." instance=ExtResource("2_614d4")]
 position = Vector2(330, -205)
 
-[node name="EnemyBullet" parent="." instance=ExtResource("3_wor4y")]
-position = Vector2(-492, -19)
+[node name="EnemyWanderShooter" parent="." instance=ExtResource("3_q80rs")]
+position = Vector2(-407, -80)

@@ -6,7 +6,6 @@ extends "res://Scripts/EnemyBase.gd"
 
 var playerNode
 var shootTimer : float = 0.0
-var isMoving : bool = false
 var canShoot : bool = false
 var fireDirection : Vector2 = Vector2(1, 0)
 
@@ -17,10 +16,8 @@ func _ready():
 	MoveToRandomPoint()
 
 func _physics_process(delta):
-	if isMoving:
-		var direction = (moveToTarget - global_position).normalized()
-		
-		velocity = direction * speed
+	if targetIsSet:
+		MoveToTargetPosition()
 		move_and_slide()
 		CheckDistanceToTargetPos()
 	elif canShoot:
@@ -36,7 +33,6 @@ func _physics_process(delta):
 func MoveToRandomPoint():
 	var randomOffset = Vector2(randf_range(-30, 30), randf_range(-30, 30))
 	SetMoveToTargetPosition(playerNode.transform.origin + randomOffset)
-	isMoving = true
 
 func DirectionRotator():
 	var rotationAngle = rotationIncrementRate * get_physics_process_delta_time()
@@ -44,6 +40,6 @@ func DirectionRotator():
 
 func CheckDistanceToTargetPos():
 	if (global_position.distance_to(moveToTarget) <= 100 || global_position.distance_to(playerNode.global_position) <= 200):
-		isMoving = false
+		ClearMoveToTargetPosition()
 		canShoot = true
 		velocity = Vector2.ZERO

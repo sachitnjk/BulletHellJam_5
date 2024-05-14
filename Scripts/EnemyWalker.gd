@@ -11,10 +11,6 @@ func _process(delta):
 	if playerNode != null:
 		moveToTarget = playerNode.transform.origin
 	
-	var direction = moveToTarget - global_position
-	direction = direction.normalized()
-	
-	velocity = direction * speed
-	
+	MoveToTargetPosition()
 	move_and_slide()
 	ApplyDamgeCollisionCheck()

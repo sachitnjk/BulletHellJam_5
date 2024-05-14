@@ -19,6 +19,10 @@ func Die():
 	queue_free()
 	pass
 
+func MoveToTargetPosition():
+	var direction = (moveToTarget - global_position).normalized()
+	velocity = direction * speed
+
 func SetMoveToTargetPosition(target: Vector2):
 	moveToTarget = target
 	targetIsSet = true
