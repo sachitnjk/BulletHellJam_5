@@ -3,50 +3,47 @@ extends "res://Scripts/EnemyBase.gd"
 @export var bulletSpeed : float
 @export_range(0.1, 2) var shootInterval : float
 @export_range(0.1, 5) var rotationIncrementRate : float
-#@export var bulletSpawnPoint: Transform2D
 
 var playerNode
-var targetPosition
 var shootTimer : float = 0.0
 var isMoving : bool = false
-var canMove : bool = true
-var canShoot : bool = true
-var baseFireDirection : Vector2 = Vector2(1, 0)
+var canShoot : bool = false
+var fireDirection : Vector2 = Vector2(1, 0)
 
 func _ready():
 	var rootNode = get_tree().get_root().get_child(0)
 	playerNode = rootNode.get_node("Player")
+	fireDirection = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
+	MoveToRandomPoint()
 
 func _physics_process(delta):
-	DirectionRotator()
-	MoveToRandomPoint()
 	if isMoving:
-		var direction = (targetPosition - global_position).normalized()
+		var direction = (moveToTarget - global_position).normalized()
 		
 		velocity = direction * speed
 		move_and_slide()
 		CheckDistanceToTargetPos()
-	else:
-		if canShoot:
-			shootTimer += delta
-			if shootTimer >= shootInterval:
-				FireBullet(baseFireDirection, global_position)
-				shootTimer = 0.0
+	elif canShoot:
+		DirectionRotator()
+		shootTimer += delta
+		if shootTimer >= shootInterval:
+			FireBullet(fireDirection, global_position)
+			shootTimer = 0.0
 	pass
 
+# THIS FUNCTION NEED CHANGING; SHOULD NOT CALL EVERY FRAME AND THE
+# POSITION SELECTION SHOULD BE FIXED CAN LEAVE IT TOO
 func MoveToRandomPoint():
-	if canMove:
-		var randomOffset = Vector2(randf_range(-250, 250), randf_range(-200, 200))
-		targetPosition = playerNode.transform.origin + randomOffset
-		
-		isMoving = true
+	var randomOffset = Vector2(randf_range(-30, 30), randf_range(-30, 30))
+	SetMoveToTargetPosition(playerNode.transform.origin + randomOffset)
+	isMoving = true
 
 func DirectionRotator():
 	var rotationAngle = rotationIncrementRate * get_physics_process_delta_time()
-	baseFireDirection = baseFireDirection.rotated(rotationAngle)
+	fireDirection = fireDirection.rotated(rotationAngle)
 
 func CheckDistanceToTargetPos():
-	if global_position.distance_to(targetPosition) <= 100:
-		canMove = false
+	if (global_position.distance_to(moveToTarget) <= 100 || global_position.distance_to(playerNode.global_position) <= 200):
 		isMoving = false
+		canShoot = true
 		velocity = Vector2.ZERO
