@@ -59,9 +59,9 @@ func FireBullet(direction: Vector2, spawnPoint: Vector2):
 	spawnnedBullet.SetMoveDirection(direction)
 	pass
 
-func IsInGameBounds(position: Vector2):
-	var isInBounds = (position.x > horizontalGameBoundLimits.x) 
-	if(isInBounds && (position.y > verticalGameBoundLimits.x) && (position.y < verticalGameBoundLimits.y)):
+func IsInGameBounds(positionToCheck: Vector2):
+	var isInBounds = (positionToCheck.x > horizontalGameBoundLimits.x) && (positionToCheck.x < horizontalGameBoundLimits.y)
+	if(isInBounds && (positionToCheck.y > verticalGameBoundLimits.x) && (positionToCheck.y < verticalGameBoundLimits.y)):
 		isInBounds = true;
 	else:
 		isInBounds = false

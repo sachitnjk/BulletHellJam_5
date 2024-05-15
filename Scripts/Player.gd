@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var shootDirectionLine: Line2D
 @export var bulletScene: PackedScene
 @export var animatedSprite: AnimatedSprite2D
+@export var playerDeathTimer: Timer
 var stoppingSpeed: float = 0
 
 const LINE_END_POINT_INDEX: int = 1
@@ -53,8 +54,14 @@ func FireBullet(direction: Vector2):
 func TakeDamage():
 	health = health - 1
 	if(health == 0):
-		print("Player Died")
+		if(playerDeathTimer != null):
+			playerDeathTimer.start()
 	else:
 		print("current player hp:")
 		print(health)
+	pass
+
+
+func PlayerDeathTimerTimeout():
+	get_tree().change_scene_to_file("res://Levels/GameOver.tscn")
 	pass
