@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bdl56e7q435wd"]
+[gd_scene load_steps=11 format=3 uid="uid://bdl56e7q435wd"]
 
 [ext_resource type="Script" path="res://Scripts/EnemyWanderShooter.gd" id="1_c34oh"]
 [ext_resource type="PackedScene" uid="uid://dgpw2xlm76vqk" path="res://GameElements/Enemies/EnemyBullet.tscn" id="2_ien26"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://c7b0k68o82g74" path="res://Assets/CharacterVisuals/Full body animated characters/Enemies/Enemy 4/roll_2.png" id="5_dwdou"]
 [ext_resource type="Texture2D" uid="uid://chwscgxn1yfsc" path="res://Assets/CharacterVisuals/Full body animated characters/Enemies/Enemy 4/roll_3.png" id="6_cqc54"]
 [ext_resource type="Texture2D" uid="uid://44jx4o3n5tb1" path="res://Assets/CharacterVisuals/Full body animated characters/Enemies/Enemy 4/roll_4.png" id="7_mt4x1"]
-[ext_resource type="AudioStream" uid="uid://cnr5cvowdatlp" path="res://Assets/AudioClips/24_orc_death_spin.ogg" id="9_xmsrn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d0gya"]
 animations = [{
@@ -57,7 +56,3 @@ frame_progress = 0.567466
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_2s8o6")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("9_xmsrn")
-volume_db = 5.0

@@ -19,7 +19,7 @@ var hitEffectTimer: float = 0.0
 
 @onready var player = %Player
 @onready var gameManager = %GameManager
-@onready var sfxPlayer = $AudioStreamPlayer
+@onready var sfxPlayer = %EnemyDeathSFXAudioPlayer
 
 func TakeDamage():
 	health = health - 1

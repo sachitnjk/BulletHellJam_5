@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://nxtsxt5q0nl1"]
+[gd_scene load_steps=14 format=3 uid="uid://nxtsxt5q0nl1"]
 
 [ext_resource type="PackedScene" uid="uid://4mp1j471qglq" path="res://GameElements/Enemies/EnemyTurretWalker.tscn" id="2_w3uen"]
 [ext_resource type="PackedScene" uid="uid://4224518il86w" path="res://GameElements/Enemies/EnemyWalker.tscn" id="2_xaqni"]
@@ -6,12 +6,21 @@
 [ext_resource type="PackedScene" uid="uid://b6rewk4as2crx" path="res://GameElements/Player.tscn" id="3_x1ix6"]
 [ext_resource type="PackedScene" uid="uid://bdl56e7q435wd" path="res://GameElements/Enemies/EnemyWanderShooter.tscn" id="4_djeeg"]
 [ext_resource type="PackedScene" uid="uid://dn1jrhhvgx5ly" path="res://GameElements/BGTilemap.tscn" id="6_unfth"]
+[ext_resource type="AudioStream" uid="uid://cnr5cvowdatlp" path="res://Assets/AudioClips/24_orc_death_spin.ogg" id="7_a4n6q"]
+[ext_resource type="Script" path="res://Scripts/GameManager.gd" id="8_4ns5u"]
+[ext_resource type="FontFile" uid="uid://but8hxvl2nhhd" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="9_vhpcd"]
+[ext_resource type="Texture2D" uid="uid://bn5ut17ngv6pa" path="res://Assets/Extras/muzzle.png" id="10_tcnx5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gur6t"]
 size = Vector2(1155, 31.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7vbba"]
 size = Vector2(30, 708)
+
+[sub_resource type="LabelSettings" id="LabelSettings_35u65"]
+font = ExtResource("9_vhpcd")
+font_size = 24
+font_color = Color(0.00392157, 0.00392157, 0.00392157, 1)
 
 [node name="NinTestingScene" type="Node2D"]
 position = Vector2(2, 0)
@@ -23,7 +32,7 @@ script = ExtResource("2_yx8gk")
 enemyPrefab = ExtResource("2_xaqni")
 sceneCam = NodePath("../Camera2D")
 moveToNode = NodePath("../Player")
-initialSpawnDelay = 0.1
+initialSpawnDelay = 2.0
 delayBetweenSpawns = 3.0
 
 [node name="EnemySpawner_TurretWalker" type="Node" parent="." node_paths=PackedStringArray("sceneCam", "moveToNode")]
@@ -31,7 +40,7 @@ script = ExtResource("2_yx8gk")
 enemyPrefab = ExtResource("2_w3uen")
 sceneCam = NodePath("../Camera2D")
 moveToNode = NodePath("../Player")
-initialSpawnDelay = 3.0
+initialSpawnDelay = 4.0
 delayBetweenSpawns = 5.0
 
 [node name="EnemySpawner_WanderShooter" type="Node" parent="." node_paths=PackedStringArray("sceneCam", "moveToNode")]
@@ -39,12 +48,13 @@ script = ExtResource("2_yx8gk")
 enemyPrefab = ExtResource("4_djeeg")
 sceneCam = NodePath("../Camera2D")
 moveToNode = NodePath("../Player")
-initialSpawnDelay = 10.0
+initialSpawnDelay = 11.0
 delayBetweenSpawns = 8.0
 
 [node name="MoveToNode" type="Node2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("3_x1ix6")]
+unique_name_in_owner = true
 
 [node name="GameBoundaries" type="Node" parent="."]
 
@@ -75,3 +85,52 @@ position = Vector2(5, 0)
 shape = SubResource("RectangleShape2D_7vbba")
 
 [node name="TileMap" parent="." instance=ExtResource("6_unfth")]
+
+[node name="EnemyDeathSFXAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(343, 154)
+stream = ExtResource("7_a4n6q")
+
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("scoreLabel", "heartsArray")]
+unique_name_in_owner = true
+script = ExtResource("8_4ns5u")
+scoreLabel = NodePath("../HudUI/ScoreValueLable")
+heartsArray = [NodePath("../HudUI/HP1"), NodePath("../HudUI/HP2"), NodePath("../HudUI/HP3")]
+
+[node name="HudUI" type="Node" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="HudUI"]
+offset_left = 418.0
+offset_top = -299.0
+offset_right = 568.0
+offset_bottom = -268.0
+text = "Score"
+label_settings = SubResource("LabelSettings_35u65")
+horizontal_alignment = 1
+
+[node name="ScoreValueLable" type="Label" parent="HudUI"]
+offset_left = 418.0
+offset_top = -267.0
+offset_right = 568.0
+offset_bottom = -236.0
+text = "20"
+label_settings = SubResource("LabelSettings_35u65")
+horizontal_alignment = 1
+
+[node name="HP1" type="Sprite2D" parent="HudUI"]
+position = Vector2(-538.28, -277)
+rotation = -1.5708
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("10_tcnx5")
+
+[node name="HP2" type="Sprite2D" parent="HudUI"]
+position = Vector2(-493.28, -277)
+rotation = -1.5708
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("10_tcnx5")
+
+[node name="HP3" type="Sprite2D" parent="HudUI"]
+position = Vector2(-451.28, -277)
+rotation = -1.5708
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("10_tcnx5")
