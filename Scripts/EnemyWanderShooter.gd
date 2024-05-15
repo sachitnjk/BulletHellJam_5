@@ -18,6 +18,7 @@ func _physics_process(delta):
 	ApplyDamgeCollisionCheck()
 	
 	HandleLookDirectionVisual()
+	HandleFlickering(delta)
 	pass
 	
 func HandleShoot(delta: float):

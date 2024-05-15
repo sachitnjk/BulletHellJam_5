@@ -11,6 +11,11 @@ extends CharacterBody2D
 
 var moveToTarget: Vector2
 var targetIsSet: bool = false
+var isFlickering: bool = false
+const flickerGap: float = 0.05
+var flickerTimer: float = 0.0
+const hitEffectTime = 0.1
+var hitEffectTimer: float = 0.0
 
 @onready var player = %Player
 @onready var gameManager = %GameManager
@@ -19,6 +24,9 @@ func TakeDamage():
 	health = health - 1
 	if(health <= 0):
 		Die()
+	else:
+		hitEffectTimer = 0.0
+		isFlickering = true
 	pass
 
 func Die():
@@ -77,3 +85,18 @@ func HandleLookDirectionVisual():
 		animatedSprite.flip_h = false
 	elif(velocity.x < 0):
 		animatedSprite.flip_h = true
+
+func HandleFlickering(delta: float):
+	if(isFlickering):
+		flickerTimer += delta
+		if(flickerTimer >= flickerGap):
+			flickerTimer = 0.0
+			if(animatedSprite.modulate.g == 1):
+				animatedSprite.modulate = Color(1, 0, 0, 1)
+			else:
+				animatedSprite.modulate = Color(1, 1, 1, 1)
+		
+		hitEffectTimer += delta
+		if(hitEffectTimer >= hitEffectTime):
+			animatedSprite.modulate = Color(1, 1, 1, 1)
+			isFlickering = false

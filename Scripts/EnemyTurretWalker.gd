@@ -24,6 +24,7 @@ func _physics_process(delta):
 		if shootTimer >= shootInterval:
 			FireBullet(fireDirection, global_position)
 			shootTimer = 0.0
+	HandleFlickering(delta)
 	pass
 
 # THIS FUNCTION NEED CHANGING; SHOULD NOT CALL EVERY FRAME AND THE
