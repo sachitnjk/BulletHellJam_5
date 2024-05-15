@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://knq16nuu6rr"]
+[gd_scene load_steps=10 format=3 uid="uid://knq16nuu6rr"]
 
 [ext_resource type="Script" path="res://Scripts/GameOverScene.gd" id="1_43u7c"]
 [ext_resource type="PackedScene" uid="uid://dn1jrhhvgx5ly" path="res://GameElements/BGTilemap.tscn" id="1_e6avm"]
 [ext_resource type="FontFile" uid="uid://but8hxvl2nhhd" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="2_uuf5d"]
+[ext_resource type="FontFile" uid="uid://conm6bljmke0a" path="res://Assets/fonts/PixelOperator8.ttf" id="4_p8nfg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i3pn0"]
 bg_color = Color(0.6, 0.6, 0.6, 0.282353)
@@ -130,6 +131,7 @@ offset_left = 30.0
 offset_top = 17.0
 offset_right = 192.0
 offset_bottom = 62.0
+theme_override_fonts/font = ExtResource("4_p8nfg")
 text = "Return To Menu"
 
 [node name="PlayAgain" type="Button" parent="BasePanel/ButtonsPanel"]
@@ -138,6 +140,7 @@ offset_left = 340.0
 offset_top = 17.0
 offset_right = 502.0
 offset_bottom = 62.0
+theme_override_fonts/font = ExtResource("4_p8nfg")
 text = "Play Again"
 
 [connection signal="pressed" from="BasePanel/ButtonsPanel/ReturnToMenu" to="." method="OnReturnToMenuPressed"]
