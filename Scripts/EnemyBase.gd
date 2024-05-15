@@ -52,7 +52,7 @@ func ApplyDamgeCollisionCheck():
 		var collider = collision.get_collider()
 		if(collider.has_method("TakeDamage")):
 			collider.TakeDamage()
-			queue_free()
+			Die()
 			break
 			#tf idk why it finds 2 colliders on the player and applies damage twice so just breaking after applying damage once
 	pass

@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var health: int = 3
 @export var speed: float = 300.0
+@export var onHitInvincibilityTime: float = 1.5
 @export var shootLineLength: float = 60.0
 @export var shootDirectionLine: Line2D
 @export var bulletScene: PackedScene
@@ -9,6 +10,10 @@ extends CharacterBody2D
 @export var playerDeathTimer: Timer
 var stoppingSpeed: float = 0
 var dead: bool = false
+var isInvincible: bool = false
+const flickerGap: float = 0.1
+var flickerTimer: float = 0.0
+var invincibilityTimer: float = 0.0
 
 const LINE_END_POINT_INDEX: int = 1
 @onready var gameManager = %GameManager
@@ -32,10 +37,14 @@ func _physics_process(delta):
 	move_and_slide()
 	if(Input.is_action_just_pressed("shoot")):
 		FireBullet(directionToMouse)
-	HandleVisuals(direction.x)
+	if(isInvincible):
+		invincibilityTimer += delta
+		if(invincibilityTimer > onHitInvincibilityTime):
+			DeactivateInvincible()
+	HandleVisuals(direction.x, delta)
 	pass
 
-func HandleVisuals(xDirectionInput: float):
+func HandleVisuals(xDirectionInput: float, delta: float):
 	if(xDirectionInput < 0):
 		animatedSprite.flip_h = true
 	elif(xDirectionInput > 0):
@@ -45,6 +54,12 @@ func HandleVisuals(xDirectionInput: float):
 		animatedSprite.play("moving")
 	else:
 		animatedSprite.play("idle")
+		
+	if(isInvincible):
+		flickerTimer += delta
+		if(flickerTimer >= flickerGap):
+			animatedSprite.visible = !animatedSprite.visible
+			flickerTimer = 0.0
 	pass
 	
 func FireBullet(direction: Vector2):
@@ -57,6 +72,10 @@ func FireBullet(direction: Vector2):
 
 
 func TakeDamage():
+	if(dead || isInvincible):
+		return
+	if(gameManager != null):
+			gameManager.PlayerHit()
 	health = health - 1
 	if(health == 0):
 		dead = true
@@ -65,10 +84,20 @@ func TakeDamage():
 		if(playerDeathTimer != null):
 			playerDeathTimer.start()
 	else:
-		if(gameManager != null):
-			gameManager.PlayerHit()
+		ActivateInvincible()
 	pass
 
+func ActivateInvincible():
+	isInvincible = true
+	animatedSprite.visible = false
+	invincibilityTimer = 0
+	flickerTimer = 0
+	pass
+
+func DeactivateInvincible():
+	animatedSprite.visible = true
+	isInvincible = false
+	pass
 
 func PlayerDeathTimerTimeout():
 	get_tree().change_scene_to_file("res://Levels/GameOver.tscn")
