@@ -24,7 +24,6 @@ func _physics_process(delta):
 		if shootTimer >= shootInterval:
 			FireBullet(fireDirection, global_position)
 			shootTimer = 0.0
-	ApplyDamgeCollisionCheck()
 	pass
 
 # THIS FUNCTION NEED CHANGING; SHOULD NOT CALL EVERY FRAME AND THE

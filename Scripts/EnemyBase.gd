@@ -11,7 +11,6 @@ extends CharacterBody2D
 
 var moveToTarget: Vector2
 var targetIsSet: bool = false
-const ROOT_NODE_CHILD_INDEX = 1
 
 @onready var player = %Player
 @onready var gameManager = %GameManager
@@ -27,7 +26,7 @@ func Die():
 		gameManager.AddScore(enemyDeathScore)
 	if(deathSmoke != null):
 		var smoke = deathSmoke.instantiate()
-		var rootNode = get_tree().get_root().get_child(ROOT_NODE_CHILD_INDEX)
+		var rootNode = get_tree().get_root().get_child(GameVars.ROOT_NODE_CHILD_INDEX)
 		rootNode.add_child(smoke)
 		smoke.global_position = global_position
 	queue_free()
@@ -59,7 +58,7 @@ func ApplyDamgeCollisionCheck():
 
 func FireBullet(direction: Vector2, spawnPoint: Vector2):
 	var spawnnedBullet = enemyBullet.instantiate()
-	var rootNode = get_tree().get_root().get_child(ROOT_NODE_CHILD_INDEX)
+	var rootNode = get_tree().get_root().get_child(GameVars.ROOT_NODE_CHILD_INDEX)
 	rootNode.add_child(spawnnedBullet)
 	spawnnedBullet.global_position = spawnPoint
 	spawnnedBullet.SetMoveDirection(direction)

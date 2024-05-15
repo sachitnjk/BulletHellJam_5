@@ -2,18 +2,17 @@ extends Node
 
 @export var scoreLabel: Label
 @export var heartsArray: Array[Sprite2D] = []
-var score: int
 var heartIndex: int
 
 func _ready():
-	score = 0
-	scoreLabel.text = str(score)
+	GameVars.score = 0
+	scoreLabel.text = str(GameVars.score)
 	heartIndex = heartsArray.size() - 1
 	pass
 
 func AddScore(amount: int):
-	score += amount
-	scoreLabel.text = str(score)
+	GameVars.score += amount
+	scoreLabel.text = str(GameVars.score)
 	pass
 
 func PlayerHit():

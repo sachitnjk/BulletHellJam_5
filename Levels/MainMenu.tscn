@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bvc6wofahyyt0"]
 
-[ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_h0bq4"]
-[ext_resource type="Script" path="res://Scripts/TempGM.gd" id="2_cya6b"]
+[ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_fyjc7"]
+[ext_resource type="Script" path="res://Scripts/TempGM.gd" id="2_3eq4p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i3pn0"]
 bg_color = Color(0.6, 0.6, 0.6, 0.282353)
@@ -29,7 +29,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_h0bq4")
+script = ExtResource("1_fyjc7")
 
 [node name="BasePanel" type="Panel" parent="."]
 layout_mode = 1
@@ -114,7 +114,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_huye7")
 text = "Exit"
 
 [node name="Temp_GM" type="Node" parent="."]
-script = ExtResource("2_cya6b")
+script = ExtResource("2_3eq4p")
 
 [connection signal="pressed" from="BasePanel/ButtonsPanel/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="BasePanel/ButtonsPanel/Exit" to="." method="_on_exit_pressed"]

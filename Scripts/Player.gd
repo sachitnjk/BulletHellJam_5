@@ -64,7 +64,7 @@ func HandleVisuals(xDirectionInput: float, delta: float):
 	
 func FireBullet(direction: Vector2):
 	var spawnnedBullet = bulletScene.instantiate()
-	var rootNode = get_tree().get_root().get_child(1)
+	var rootNode = get_tree().get_root().get_child(GameVars.ROOT_NODE_CHILD_INDEX)
 	rootNode.add_child(spawnnedBullet)
 	spawnnedBullet.global_position = shootDirectionLine.global_position
 	spawnnedBullet.SetMoveDirection(direction)
