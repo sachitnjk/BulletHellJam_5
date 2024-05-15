@@ -1,7 +1,8 @@
 extends CharacterBody2D 
 
-@export var speed : float
+@export var speed : float = 40
 @export var health : float = 6
+@export var enemyDeathScore: int = 2
 @export var enemyBullet : PackedScene
 @export var animatedSprite: AnimatedSprite2D
 @export var horizontalGameBoundLimits: Vector2 = Vector2(-527, 527)
@@ -10,6 +11,9 @@ extends CharacterBody2D
 var moveToTarget: Vector2
 var targetIsSet: bool = false
 
+@onready var player = %Player
+@onready var gameManager = %GameManager
+
 func TakeDamage():
 	health = health - 1
 	if(health <= 0):
@@ -17,7 +21,8 @@ func TakeDamage():
 	pass
 
 func Die():
-	print("enemy Died")
+	if(gameManager != null):
+		gameManager.AddScore(enemyDeathScore)
 	#do vfx or whatever here and also maybe sound
 	queue_free()
 	pass
@@ -48,7 +53,7 @@ func ApplyDamgeCollisionCheck():
 
 func FireBullet(direction: Vector2, spawnPoint: Vector2):
 	var spawnnedBullet = enemyBullet.instantiate()
-	var rootNode = get_tree().get_root().get_child(0)
+	var rootNode = get_tree().get_root().get_child(1)
 	rootNode.add_child(spawnnedBullet)
 	spawnnedBullet.global_position = spawnPoint
 	spawnnedBullet.SetMoveDirection(direction)

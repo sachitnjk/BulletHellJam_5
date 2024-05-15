@@ -1,47 +1,92 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfcxcrom1v00i"]
+[gd_scene load_steps=11 format=3 uid="uid://dfcxcrom1v00i"]
 
+[ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_lilao"]
 [ext_resource type="PackedScene" uid="uid://b6rewk4as2crx" path="res://GameElements/Player.tscn" id="1_moyxt"]
 [ext_resource type="PackedScene" uid="uid://dn1jrhhvgx5ly" path="res://GameElements/BGTilemap.tscn" id="2_ahdyl"]
+[ext_resource type="FontFile" uid="uid://but8hxvl2nhhd" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="3_a4us1"]
+[ext_resource type="PackedScene" uid="uid://4224518il86w" path="res://GameElements/Enemies/EnemyWalker.tscn" id="5_aio1d"]
+[ext_resource type="PackedScene" uid="uid://bdl56e7q435wd" path="res://GameElements/Enemies/EnemyWanderShooter.tscn" id="6_s3gya"]
+[ext_resource type="PackedScene" uid="uid://4mp1j471qglq" path="res://GameElements/Enemies/EnemyTurretWalker.tscn" id="7_d86n5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fmlqh"]
+font = ExtResource("3_a4us1")
+font_size = 24
+font_color = Color(0.00392157, 0.00392157, 0.00392157, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l526j"]
 size = Vector2(1155, 31.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ne8e7"]
-size = Vector2(30, 708)
+size = Vector2(30, 605)
 
 [node name="Game" type="Node2D"]
+
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("scoreLabel")]
+unique_name_in_owner = true
+script = ExtResource("1_lilao")
+scoreLabel = NodePath("ScoreValueLable")
+
+[node name="ScoreValueLable" type="Label" parent="GameManager"]
+offset_left = 418.0
+offset_top = -267.0
+offset_right = 568.0
+offset_bottom = -236.0
+text = "20"
+label_settings = SubResource("LabelSettings_fmlqh")
+horizontal_alignment = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("1_moyxt")]
+unique_name_in_owner = true
 position = Vector2(2, 0)
 
 [node name="GameBoundaries" type="Node" parent="."]
 
 [node name="TopBoundary" type="StaticBody2D" parent="GameBoundaries"]
-position = Vector2(0, -338)
+position = Vector2(0, -322)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoundaries/TopBoundary"]
 shape = SubResource("RectangleShape2D_l526j")
 
 [node name="BottomBoundary" type="StaticBody2D" parent="GameBoundaries"]
-position = Vector2(0, 338)
+position = Vector2(0, 321)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoundaries/BottomBoundary"]
 shape = SubResource("RectangleShape2D_l526j")
 
 [node name="RightBoundary" type="StaticBody2D" parent="GameBoundaries"]
-position = Vector2(589, 0)
+position = Vector2(570, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoundaries/RightBoundary"]
-position = Vector2(5, 0)
+position = Vector2(5, -0.5)
 shape = SubResource("RectangleShape2D_ne8e7")
 
 [node name="LeftBoundary" type="StaticBody2D" parent="GameBoundaries"]
-position = Vector2(-598, 0)
+position = Vector2(-582, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoundaries/LeftBoundary"]
 position = Vector2(5, 0)
 shape = SubResource("RectangleShape2D_ne8e7")
 
 [node name="TileMap" parent="." instance=ExtResource("2_ahdyl")]
+
+[node name="EnemyWalker" parent="." instance=ExtResource("5_aio1d")]
+position = Vector2(343, 154)
+
+[node name="EnemyWanderShooter" parent="." instance=ExtResource("6_s3gya")]
+position = Vector2(-282, -125)
+
+[node name="EnemyTurretWalker" parent="." instance=ExtResource("7_d86n5")]
+position = Vector2(-367, 198)
+
+[node name="HudUI" type="Node" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="HudUI"]
+offset_left = 418.0
+offset_top = -299.0
+offset_right = 568.0
+offset_bottom = -268.0
+text = "Score"
+label_settings = SubResource("LabelSettings_fmlqh")
+horizontal_alignment = 1

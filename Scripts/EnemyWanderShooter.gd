@@ -2,12 +2,10 @@ extends "res://Scripts/EnemyBase.gd"
 
 @export var gapBetweenShots: float = 1.5
 var shootingTimer: float
-var player: Node2D
 
 func _ready():
 	SetNewMoveTarget()
 	shootingTimer = gapBetweenShots
-	player = get_tree().get_root().get_child(0).get_node("Player")
 	pass
 
 func _physics_process(delta):

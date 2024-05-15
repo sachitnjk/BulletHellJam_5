@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://4mp1j471qglq"]
 
 [ext_resource type="Script" path="res://Scripts/EnemyTurretWalker.gd" id="1_mg1ge"]
-[ext_resource type="PackedScene" uid="uid://dgpw2xlm76vqk" path="res://GameElements/EnemyBullet.tscn" id="2_uilik"]
+[ext_resource type="PackedScene" uid="uid://dgpw2xlm76vqk" path="res://GameElements/Enemies/EnemyBullet.tscn" id="2_uilik"]
 [ext_resource type="Texture2D" uid="uid://bd8u82yig23fs" path="res://Assets/CharacterVisuals/Full body animated characters/Enemies/Enemy 2/hit_0.png" id="3_behoi"]
 [ext_resource type="Texture2D" uid="uid://jbv4vohv451" path="res://Assets/CharacterVisuals/Full body animated characters/Enemies/Enemy 2/hit_1.png" id="4_m7meb"]
 [ext_resource type="Texture2D" uid="uid://c18lff1we57i4" path="res://Assets/CharacterVisuals/Full body animated characters/Enemies/Enemy 2/hit_2.png" id="5_w40h0"]
@@ -72,6 +72,7 @@ bulletSpeed = 10.0
 shootInterval = 0.2
 rotationIncrementRate = 1.5
 speed = 80.0
+enemyDeathScore = 10
 enemyBullet = ExtResource("2_uilik")
 animatedSprite = NodePath("AnimatedSprite2D")
 

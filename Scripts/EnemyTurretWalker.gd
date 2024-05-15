@@ -4,14 +4,11 @@ extends "res://Scripts/EnemyBase.gd"
 @export_range(0.1, 2) var shootInterval : float
 @export_range(0.1, 5) var rotationIncrementRate : float
 
-var playerNode
 var shootTimer : float = 0.0
 var canShoot : bool = false
 var fireDirection : Vector2 = Vector2(1, 0)
 
 func _ready():
-	var rootNode = get_tree().get_root().get_child(0)
-	playerNode = rootNode.get_node("Player")
 	fireDirection = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
 	MoveToRandomPoint()
 
@@ -34,9 +31,9 @@ func _physics_process(delta):
 # POSITION SELECTION SHOULD BE FIXED CAN LEAVE IT TOO
 func MoveToRandomPoint():
 	var randomOffset = Vector2(randf_range(-30, 30), randf_range(-30, 30))
-	var target = playerNode.transform.origin + randomOffset
+	var target = player.transform.origin + randomOffset
 	if(!IsInGameBounds(target)):
-		target = playerNode.global_position
+		target = player.global_position
 	SetMoveToTargetPosition(target)
 
 func DirectionRotator():
@@ -44,7 +41,7 @@ func DirectionRotator():
 	fireDirection = fireDirection.rotated(rotationAngle)
 
 func CheckDistanceToTargetPos():
-	var stoppingForPlayer = IsInGameBounds(global_position) && (global_position.distance_to(playerNode.global_position) <= 200)
+	var stoppingForPlayer = IsInGameBounds(global_position) && (global_position.distance_to(player.global_position) <= 200)
 	if (global_position.distance_to(moveToTarget) <= 100 || stoppingForPlayer):
 		ClearMoveToTargetPosition()
 		canShoot = true
