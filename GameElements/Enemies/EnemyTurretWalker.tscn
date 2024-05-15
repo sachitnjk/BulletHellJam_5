@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://4mp1j471qglq"]
+[gd_scene load_steps=17 format=3 uid="uid://4mp1j471qglq"]
 
 [ext_resource type="Script" path="res://Scripts/EnemyTurretWalker.gd" id="1_mg1ge"]
 [ext_resource type="PackedScene" uid="uid://dgpw2xlm76vqk" path="res://GameElements/Enemies/EnemyBullet.tscn" id="2_uilik"]
 [ext_resource type="Texture2D" uid="uid://bd8u82yig23fs" path="res://Assets/CharacterVisuals/Full body animated characters/Enemies/Enemy 2/hit_0.png" id="3_behoi"]
+[ext_resource type="PackedScene" uid="uid://caulomyf3tfci" path="res://GameElements/DeathSmoke.tscn" id="3_d82d8"]
 [ext_resource type="Texture2D" uid="uid://jbv4vohv451" path="res://Assets/CharacterVisuals/Full body animated characters/Enemies/Enemy 2/hit_1.png" id="4_m7meb"]
 [ext_resource type="Texture2D" uid="uid://c18lff1we57i4" path="res://Assets/CharacterVisuals/Full body animated characters/Enemies/Enemy 2/hit_2.png" id="5_w40h0"]
 [ext_resource type="Texture2D" uid="uid://c6lf5fp1cbfer" path="res://Assets/CharacterVisuals/Full body animated characters/Enemies/Enemy 2/walk_0.png" id="6_3mtqd"]
@@ -74,6 +75,7 @@ rotationIncrementRate = 1.5
 speed = 80.0
 enemyDeathScore = 10
 enemyBullet = ExtResource("2_uilik")
+deathSmoke = ExtResource("3_d82d8")
 animatedSprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

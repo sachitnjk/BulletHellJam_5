@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://4224518il86w"]
+[gd_scene load_steps=11 format=3 uid="uid://4224518il86w"]
 
 [ext_resource type="Script" path="res://Scripts/EnemyWalker.gd" id="1_wvtj6"]
 [ext_resource type="Texture2D" uid="uid://b4idy7yg6k227" path="res://Assets/CharacterVisuals/Full body animated characters/Enemies/Enemy 3/fly_0.png" id="2_ylb74"]
+[ext_resource type="PackedScene" uid="uid://caulomyf3tfci" path="res://GameElements/DeathSmoke.tscn" id="3_awgyh"]
 [ext_resource type="Texture2D" uid="uid://cpdmklkgkwmmd" path="res://Assets/CharacterVisuals/Full body animated characters/Enemies/Enemy 3/fly_1.png" id="3_qorxk"]
 [ext_resource type="Texture2D" uid="uid://dwrxww5w1xie1" path="res://Assets/CharacterVisuals/Full body animated characters/Enemies/Enemy 3/fly_2.png" id="4_jtapl"]
 [ext_resource type="Texture2D" uid="uid://gbqkgmw3dto4" path="res://Assets/CharacterVisuals/Full body animated characters/Enemies/Enemy 3/fly_3.png" id="5_x2dco"]
@@ -43,6 +44,7 @@ collision_mask = 2
 script = ExtResource("1_wvtj6")
 speed = 80.0
 health = 2.0
+deathSmoke = ExtResource("3_awgyh")
 animatedSprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
