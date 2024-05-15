@@ -1,10 +1,20 @@
-[gd_scene load_steps=19 format=3 uid="uid://b6rewk4as2crx"]
+[gd_scene load_steps=29 format=3 uid="uid://b6rewk4as2crx"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_raykd"]
 [ext_resource type="PackedScene" uid="uid://uwp382si36re" path="res://GameElements/PlayerBullet.tscn" id="2_u0xyq"]
+[ext_resource type="Texture2D" uid="uid://1jjqpeltrcfq" path="res://Assets/CharacterVisuals/Full body animated characters/Char 3/no hands/death_0.png" id="3_io8go"]
+[ext_resource type="Texture2D" uid="uid://cnlqfark4bm05" path="res://Assets/CharacterVisuals/Full body animated characters/Char 3/no hands/death_1.png" id="4_2ksna"]
+[ext_resource type="Texture2D" uid="uid://dsijf07ff86oe" path="res://Assets/CharacterVisuals/Full body animated characters/Char 3/no hands/death_2.png" id="5_s5ts5"]
+[ext_resource type="Texture2D" uid="uid://ggysj3v12ya5" path="res://Assets/CharacterVisuals/Full body animated characters/Char 3/no hands/death_3.png" id="6_md88m"]
+[ext_resource type="Texture2D" uid="uid://bu1yj7x4il4sg" path="res://Assets/CharacterVisuals/Full body animated characters/Char 3/no hands/death_4.png" id="7_i2cnc"]
+[ext_resource type="Texture2D" uid="uid://382xlvcrisd4" path="res://Assets/CharacterVisuals/Full body animated characters/Char 3/no hands/death_5.png" id="8_a808v"]
+[ext_resource type="Texture2D" uid="uid://bsu6ghtflya0c" path="res://Assets/CharacterVisuals/Full body animated characters/Char 3/no hands/death_6.png" id="9_1pn04"]
 [ext_resource type="Texture2D" uid="uid://bxph01n2vjy18" path="res://Assets/CharacterVisuals/Full body animated characters/Char 3/no hands/idle_0.png" id="9_6blwh"]
 [ext_resource type="Texture2D" uid="uid://dqgvihxefhqoe" path="res://Assets/CharacterVisuals/Full body animated characters/Char 3/no hands/idle_1.png" id="10_csysk"]
+[ext_resource type="Texture2D" uid="uid://ddvupmhjilte2" path="res://Assets/CharacterVisuals/Full body animated characters/Char 3/no hands/death_7.png" id="10_vu0xe"]
+[ext_resource type="Texture2D" uid="uid://bktps1svjf1kg" path="res://Assets/CharacterVisuals/Full body animated characters/Char 3/no hands/death_8.png" id="11_hi0g8"]
 [ext_resource type="Texture2D" uid="uid://dpcupfijd6su8" path="res://Assets/CharacterVisuals/Full body animated characters/Char 3/no hands/idle_2.png" id="11_mhmnw"]
+[ext_resource type="Texture2D" uid="uid://bg8xxm476joaa" path="res://Assets/CharacterVisuals/Full body animated characters/Char 3/no hands/death_9.png" id="12_bq1js"]
 [ext_resource type="Texture2D" uid="uid://qj386gfmx35t" path="res://Assets/CharacterVisuals/Full body animated characters/Char 3/no hands/idle_3.png" id="12_k2gpp"]
 [ext_resource type="Texture2D" uid="uid://cja6lt82h8uxb" path="res://Assets/CharacterVisuals/Full body animated characters/Char 3/no hands/idle_4.png" id="13_rpooo"]
 [ext_resource type="Texture2D" uid="uid://dr0t7iq7bj07v" path="res://Assets/CharacterVisuals/Full body animated characters/Char 3/no hands/idle_5.png" id="14_uhpuc"]
@@ -19,6 +29,41 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6n2sp"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_io8go")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2ksna")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_s5ts5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_md88m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_i2cnc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_a808v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_1pn04")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_vu0xe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_hi0g8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_bq1js")
+}],
+"loop": false,
+"name": &"death",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("9_6blwh")
@@ -96,14 +141,16 @@ z_index = 3
 position = Vector2(0, -77)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_6n2sp")
-animation = &"moving"
+animation = &"death"
 autoplay = "idle"
-frame_progress = 0.058495
+frame = 8
+frame_progress = 0.209849
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -33.9)
 shape = SubResource("CircleShape2D_u6i5e")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
 
 [connection signal="timeout" from="Timer" to="." method="PlayerDeathTimerTimeout"]

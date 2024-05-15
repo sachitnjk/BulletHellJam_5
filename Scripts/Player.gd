@@ -8,14 +8,19 @@ extends CharacterBody2D
 @export var animatedSprite: AnimatedSprite2D
 @export var playerDeathTimer: Timer
 var stoppingSpeed: float = 0
+var dead: bool = false
 
 const LINE_END_POINT_INDEX: int = 1
+@onready var gameManager = %GameManager
 
 func _ready():
 	stoppingSpeed = speed/4
 	pass
 
 func _physics_process(delta):
+	if(dead):
+		return
+		
 	var direction = Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_down", "move_up"))
 	if (direction):
 		velocity = direction * speed
@@ -54,11 +59,14 @@ func FireBullet(direction: Vector2):
 func TakeDamage():
 	health = health - 1
 	if(health == 0):
+		dead = true
+		shootDirectionLine.visible = false
+		animatedSprite.play("death")
 		if(playerDeathTimer != null):
 			playerDeathTimer.start()
 	else:
-		print("current player hp:")
-		print(health)
+		if(gameManager != null):
+			gameManager.PlayerHit()
 	pass
 
 

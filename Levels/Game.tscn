@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dfcxcrom1v00i"]
+[gd_scene load_steps=12 format=3 uid="uid://dfcxcrom1v00i"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_lilao"]
 [ext_resource type="PackedScene" uid="uid://b6rewk4as2crx" path="res://GameElements/Player.tscn" id="1_moyxt"]
@@ -7,11 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://4224518il86w" path="res://GameElements/Enemies/EnemyWalker.tscn" id="5_aio1d"]
 [ext_resource type="PackedScene" uid="uid://bdl56e7q435wd" path="res://GameElements/Enemies/EnemyWanderShooter.tscn" id="6_s3gya"]
 [ext_resource type="PackedScene" uid="uid://4mp1j471qglq" path="res://GameElements/Enemies/EnemyTurretWalker.tscn" id="7_d86n5"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_fmlqh"]
-font = ExtResource("3_a4us1")
-font_size = 24
-font_color = Color(0.00392157, 0.00392157, 0.00392157, 1)
+[ext_resource type="Texture2D" uid="uid://bn5ut17ngv6pa" path="res://Assets/Extras/muzzle.png" id="8_mfylt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l526j"]
 size = Vector2(1155, 31.5)
@@ -19,21 +15,18 @@ size = Vector2(1155, 31.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ne8e7"]
 size = Vector2(30, 605)
 
+[sub_resource type="LabelSettings" id="LabelSettings_fmlqh"]
+font = ExtResource("3_a4us1")
+font_size = 24
+font_color = Color(0.00392157, 0.00392157, 0.00392157, 1)
+
 [node name="Game" type="Node2D"]
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("scoreLabel")]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("scoreLabel", "heartsArray")]
 unique_name_in_owner = true
 script = ExtResource("1_lilao")
-scoreLabel = NodePath("ScoreValueLable")
-
-[node name="ScoreValueLable" type="Label" parent="GameManager"]
-offset_left = 418.0
-offset_top = -267.0
-offset_right = 568.0
-offset_bottom = -236.0
-text = "20"
-label_settings = SubResource("LabelSettings_fmlqh")
-horizontal_alignment = 1
+scoreLabel = NodePath("../HudUI/ScoreValueLable")
+heartsArray = [NodePath("../HudUI/HP1"), NodePath("../HudUI/HP2"), NodePath("../HudUI/HP3")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -90,3 +83,30 @@ offset_bottom = -268.0
 text = "Score"
 label_settings = SubResource("LabelSettings_fmlqh")
 horizontal_alignment = 1
+
+[node name="ScoreValueLable" type="Label" parent="HudUI"]
+offset_left = 418.0
+offset_top = -267.0
+offset_right = 568.0
+offset_bottom = -236.0
+text = "20"
+label_settings = SubResource("LabelSettings_fmlqh")
+horizontal_alignment = 1
+
+[node name="HP1" type="Sprite2D" parent="HudUI"]
+position = Vector2(-538.28, -277)
+rotation = -1.5708
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("8_mfylt")
+
+[node name="HP2" type="Sprite2D" parent="HudUI"]
+position = Vector2(-493.28, -277)
+rotation = -1.5708
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("8_mfylt")
+
+[node name="HP3" type="Sprite2D" parent="HudUI"]
+position = Vector2(-451.28, -277)
+rotation = -1.5708
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("8_mfylt")
