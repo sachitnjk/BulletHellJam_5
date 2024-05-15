@@ -19,6 +19,7 @@ var hitEffectTimer: float = 0.0
 
 @onready var player = %Player
 @onready var gameManager = %GameManager
+@onready var sfxPlayer = $AudioStreamPlayer
 
 func TakeDamage():
 	health = health - 1
@@ -30,6 +31,12 @@ func TakeDamage():
 	pass
 
 func Die():
+	if(sfxPlayer != null):
+		print("asdadadads")
+		sfxPlayer.play()
+	else:
+		print("goin back to unity fk this")
+	
 	if(gameManager != null):
 		gameManager.AddScore(enemyDeathScore)
 	if(deathSmoke != null):
