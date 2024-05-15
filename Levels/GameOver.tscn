@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://knq16nuu6rr"]
+[gd_scene load_steps=13 format=3 uid="uid://knq16nuu6rr"]
 
 [ext_resource type="Script" path="res://Scripts/GameOverScene.gd" id="1_43u7c"]
 [ext_resource type="PackedScene" uid="uid://dn1jrhhvgx5ly" path="res://GameElements/BGTilemap.tscn" id="1_e6avm"]
@@ -21,7 +21,16 @@ font = ExtResource("2_uuf5d")
 font_size = 50
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_77kj7"]
-bg_color = Color(0.203922, 0.203922, 0.203922, 0.0862745)
+bg_color = Color(0.203922, 0.203922, 0.203922, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lt0rh"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_huye7"]
+bg_color = Color(0.239216, 0.239216, 0.239216, 0.588235)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4gxwe"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="GameOver" type="Control" node_paths=PackedStringArray("scoreLabel")]
 layout_mode = 3
@@ -132,6 +141,8 @@ offset_top = 17.0
 offset_right = 192.0
 offset_bottom = 62.0
 theme_override_fonts/font = ExtResource("4_p8nfg")
+theme_override_styles/normal = SubResource("StyleBoxFlat_lt0rh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_huye7")
 text = "Return To Menu"
 
 [node name="PlayAgain" type="Button" parent="BasePanel/ButtonsPanel"]
@@ -141,6 +152,8 @@ offset_top = 17.0
 offset_right = 502.0
 offset_bottom = 62.0
 theme_override_fonts/font = ExtResource("4_p8nfg")
+theme_override_styles/normal = SubResource("StyleBoxFlat_4gxwe")
+theme_override_styles/hover = SubResource("StyleBoxFlat_huye7")
 text = "Play Again"
 
 [connection signal="pressed" from="BasePanel/ButtonsPanel/ReturnToMenu" to="." method="OnReturnToMenuPressed"]
