@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://bvc6wofahyyt0"]
+[gd_scene load_steps=13 format=3 uid="uid://bvc6wofahyyt0"]
 
 [ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_fyjc7"]
 [ext_resource type="PackedScene" uid="uid://dn1jrhhvgx5ly" path="res://GameElements/BGTilemap.tscn" id="2_1objl"]
 [ext_resource type="Script" path="res://Scripts/TempGM.gd" id="2_3eq4p"]
 [ext_resource type="FontFile" uid="uid://but8hxvl2nhhd" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="3_a06cq"]
 [ext_resource type="FontFile" uid="uid://conm6bljmke0a" path="res://Assets/fonts/PixelOperator8.ttf" id="4_s7nu0"]
+[ext_resource type="AudioStream" uid="uid://bmebxdh0kq8u5" path="res://Assets/AudioClips/ButtonClick.ogg" id="6_1do8r"]
+[ext_resource type="Script" path="res://Scripts/UISound.gd" id="7_e3pvr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i3pn0"]
 bg_color = Color(0.6, 0.6, 0.6, 0.282353)
@@ -126,5 +128,13 @@ text = "Exit"
 [node name="Temp_GM" type="Node" parent="."]
 script = ExtResource("2_3eq4p")
 
+[node name="UIButtonAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_1do8r")
+volume_db = -4.0
+script = ExtResource("7_e3pvr")
+
+[connection signal="button_down" from="BasePanel/ButtonsPanel/Play" to="UIButtonAudio" method="_on_play_button_down"]
 [connection signal="pressed" from="BasePanel/ButtonsPanel/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="BasePanel/ButtonsPanel/Play" to="UIButtonAudio" method="_on_play_pressed"]
+[connection signal="button_down" from="BasePanel/ButtonsPanel/Exit" to="UIButtonAudio" method="_on_exit_button_down"]
 [connection signal="pressed" from="BasePanel/ButtonsPanel/Exit" to="." method="_on_exit_pressed"]

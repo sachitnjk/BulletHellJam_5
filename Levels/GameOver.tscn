@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://knq16nuu6rr"]
+[gd_scene load_steps=15 format=3 uid="uid://knq16nuu6rr"]
 
 [ext_resource type="Script" path="res://Scripts/GameOverScene.gd" id="1_43u7c"]
 [ext_resource type="PackedScene" uid="uid://dn1jrhhvgx5ly" path="res://GameElements/BGTilemap.tscn" id="1_e6avm"]
 [ext_resource type="FontFile" uid="uid://but8hxvl2nhhd" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="2_uuf5d"]
 [ext_resource type="FontFile" uid="uid://conm6bljmke0a" path="res://Assets/fonts/PixelOperator8.ttf" id="4_p8nfg"]
+[ext_resource type="AudioStream" uid="uid://bmebxdh0kq8u5" path="res://Assets/AudioClips/ButtonClick.ogg" id="5_0uv5d"]
+[ext_resource type="Script" path="res://Scripts/UISound.gd" id="6_shwod"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i3pn0"]
 bg_color = Color(0.6, 0.6, 0.6, 0.282353)
@@ -156,5 +158,12 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_4gxwe")
 theme_override_styles/hover = SubResource("StyleBoxFlat_huye7")
 text = "Play Again"
 
+[node name="UIButtonAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_0uv5d")
+volume_db = -4.0
+script = ExtResource("6_shwod")
+
+[connection signal="button_down" from="BasePanel/ButtonsPanel/ReturnToMenu" to="UIButtonAudio" method="_on_return_to_menu_button_down"]
 [connection signal="pressed" from="BasePanel/ButtonsPanel/ReturnToMenu" to="." method="OnReturnToMenuPressed"]
+[connection signal="button_down" from="BasePanel/ButtonsPanel/PlayAgain" to="UIButtonAudio" method="_on_play_again_button_down"]
 [connection signal="pressed" from="BasePanel/ButtonsPanel/PlayAgain" to="." method="OnPlayAgainPressed"]
