@@ -27,27 +27,24 @@ position = Vector2(2, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="EnemySpawner_Walker" type="Node" parent="." node_paths=PackedStringArray("sceneCam", "moveToNode")]
+[node name="EnemySpawner_Walker" type="Node" parent="." node_paths=PackedStringArray("sceneCam")]
 script = ExtResource("2_yx8gk")
 enemyPrefab = ExtResource("2_xaqni")
 sceneCam = NodePath("../Camera2D")
-moveToNode = NodePath("../Player")
 initialSpawnDelay = 2.0
 delayBetweenSpawns = 3.0
 
-[node name="EnemySpawner_TurretWalker" type="Node" parent="." node_paths=PackedStringArray("sceneCam", "moveToNode")]
+[node name="EnemySpawner_TurretWalker" type="Node" parent="." node_paths=PackedStringArray("sceneCam")]
 script = ExtResource("2_yx8gk")
 enemyPrefab = ExtResource("2_w3uen")
 sceneCam = NodePath("../Camera2D")
-moveToNode = NodePath("../Player")
 initialSpawnDelay = 4.0
 delayBetweenSpawns = 5.0
 
-[node name="EnemySpawner_WanderShooter" type="Node" parent="." node_paths=PackedStringArray("sceneCam", "moveToNode")]
+[node name="EnemySpawner_WanderShooter" type="Node" parent="." node_paths=PackedStringArray("sceneCam")]
 script = ExtResource("2_yx8gk")
 enemyPrefab = ExtResource("4_djeeg")
 sceneCam = NodePath("../Camera2D")
-moveToNode = NodePath("../Player")
 initialSpawnDelay = 11.0
 delayBetweenSpawns = 8.0
 
