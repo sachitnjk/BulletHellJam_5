@@ -17,9 +17,17 @@ var flickerTimer: float = 0.0
 const hitEffectTime = 0.1
 var hitEffectTimer: float = 0.0
 
-@onready var player = %Player
-@onready var gameManager = %GameManager
-@onready var sfxPlayer = %EnemyDeathSFXAudioPlayer
+var player
+var gameManager
+var sfxPlayer
+
+func GetRequiredRefsFromUniqueName():
+	if(player != null):
+		pass
+	var searchRoot = get_tree().get_root().get_child(GameVars.ROOT_NODE_CHILD_INDEX)
+	player = searchRoot.get_node(GameVars.PLAYER_NAME)
+	gameManager = searchRoot.get_node(GameVars.GAME_MANAGER_NAME)
+	sfxPlayer = searchRoot.get_node(GameVars.SFX_Player_NAME)
 
 func TakeDamage():
 	health = health - 1

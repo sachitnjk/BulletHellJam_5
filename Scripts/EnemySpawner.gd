@@ -4,7 +4,6 @@ extends Node
 #var enemyPrefab = preload("res://GameElements/Enemy.tscn")
 @export var enemyPrefab : PackedScene
 @export var sceneCam : Camera2D
-@export var moveToNode : Node2D
 @export var scaleRange : float = 0.9
 
 @export_range(0.1, 100) var initialSpawnDelay : float
@@ -53,3 +52,4 @@ func SpawnEnemy():
 	var  charBodyTesting = enemyPrefab.instantiate()
 	charBodyTesting.transform = GetRandomSpawnPoint()
 	add_child(charBodyTesting)
+	charBodyTesting.GetRequiredRefsFromUniqueName()

@@ -30,6 +30,7 @@ func _physics_process(delta):
 # THIS FUNCTION NEED CHANGING; SHOULD NOT CALL EVERY FRAME AND THE
 # POSITION SELECTION SHOULD BE FIXED CAN LEAVE IT TOO
 func MoveToRandomPoint():
+	GetRequiredRefsFromUniqueName()
 	var randomOffset = Vector2(randf_range(-30, 30), randf_range(-30, 30))
 	var target = player.transform.origin + randomOffset
 	if(!IsInGameBounds(target)):
