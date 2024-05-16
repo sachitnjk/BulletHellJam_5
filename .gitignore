@@ -1,5 +1,7 @@
 # Godot 4+ specific ignores
 .godot/
+/[Bb]uild/
+/[Bb]uilds/
 
 # Godot-specific ignores
 .import/
