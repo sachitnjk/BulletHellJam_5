@@ -8,6 +8,7 @@ extends CharacterBody2D
 @export var bulletScene: PackedScene
 @export var animatedSprite: AnimatedSprite2D
 @export var playerDeathTimer: Timer
+@export var playerCollider : CollisionShape2D
 var stoppingSpeed: float = 0
 var dead: bool = false
 var isInvincible: bool = false
@@ -79,6 +80,7 @@ func TakeDamage():
 	health = health - 1
 	if(health == 0):
 		dead = true
+		playerCollider.disabled = true
 		shootDirectionLine.visible = false
 		animatedSprite.play("death")
 		if(playerDeathTimer != null):
